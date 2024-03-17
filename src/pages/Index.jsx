@@ -49,8 +49,8 @@ const Index = () => {
           particle.y = particle.initialPosition.y + Math.sin(particle.direction) * distanceRatio * particle.maxDistance;
 
           const waveDistance = particle.x - SOUND_SOURCE_WIDTH;
-          const waveOffset = Math.sin(waveDistance / wavelength + Date.now() / 100) * amplitude;
-          particle.x += waveOffset * 0.5;
+          const waveOffset = Math.sin(waveDistance / wavelength - Date.now() / 100) * amplitude;
+          particle.x -= waveOffset * 0.5;
         }
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, 4, 0, Math.PI * 2);
