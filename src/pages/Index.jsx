@@ -39,7 +39,7 @@ const Index = () => {
           particle.x += waveOffset * 0.1;
         }
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, 4, 0, Math.PI * 2);
+        ctx.arc(particle.x, particle.y, 12, 0, Math.PI * 2);
         ctx.fill();
       });
 
