@@ -17,9 +17,15 @@ const Index = () => {
     const particles = [];
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
       particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
+        x,
+        y,
+        initialPosition: { x, y },
+        direction: Math.random() * Math.PI * 2,
+        distance: 0,
+        maxDistance: Math.random() * 50 + 50,
       });
     }
 
@@ -34,8 +40,16 @@ const Index = () => {
       ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
       particles.forEach((particle) => {
         if (isPlaying) {
-          const distance = particle.x - SOUND_SOURCE_WIDTH;
-          const waveOffset = Math.sin(distance / wavelength + Date.now() / 100) * amplitude;
+          particle.distance += 1;
+          if (particle.distance > particle.maxDistance) {
+            particle.distance = 0;
+          }
+          const distanceRatio = particle.distance / particle.maxDistance;
+          particle.x = particle.initialPosition.x + Math.cos(particle.direction) * distanceRatio * particle.maxDistance;
+          particle.y = particle.initialPosition.y + Math.sin(particle.direction) * distanceRatio * particle.maxDistance;
+
+          const waveDistance = particle.x - SOUND_SOURCE_WIDTH;
+          const waveOffset = Math.sin(waveDistance / wavelength + Date.now() / 100) * amplitude;
           particle.x += waveOffset * 0.1;
         }
         ctx.beginPath();
