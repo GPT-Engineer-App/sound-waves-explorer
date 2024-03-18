@@ -68,14 +68,14 @@ const Index = () => {
       <canvas ref={canvasRef} width={window.innerWidth} height={window.innerHeight} style={{ position: "absolute", top: 0, left: 0, zIndex: -1 }} />
       <VStack spacing={4} p={4} alignItems="flex-start">
         <Text color="white">Wavelength: {wavelength}</Text>
-        <Slider value={wavelength} min={10} max={100} onChange={(value) => setWavelength(value)} width="250px">
+        <Slider value={wavelength} min={0} max={100} onChange={(value) => setWavelength(value)} width="250px">
           <SliderTrack>
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
         <Text color="white">Amplitude: {amplitude}</Text>
-        <Slider value={amplitude} min={10} max={50} onChange={(value) => setAmplitude(value)} width="250px">
+        <Slider value={amplitude} min={0} max={100} onChange={(value) => setAmplitude(value)} width="250px">
           <SliderTrack>
             <SliderFilledTrack />
           </SliderTrack>
