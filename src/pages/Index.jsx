@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Button, VStack, HStack, Text } from "@chakra-ui/react";
 import { FaPlay, FaPause } from "react-icons/fa";
 
-const PARTICLE_COUNT = 10000;
+const PARTICLE_COUNT = 8000;
 const SOUND_SOURCE_WIDTH = 300;
 
 const Index = () => {
@@ -68,14 +68,14 @@ const Index = () => {
       <canvas ref={canvasRef} width={window.innerWidth} height={window.innerHeight} style={{ position: "absolute", top: 0, left: 0, zIndex: -1 }} />
       <VStack spacing={4} p={4} alignItems="flex-start">
         <Text color="white">Wavelength: {wavelength}</Text>
-        <Slider value={wavelength} min={0} max={100} onChange={(value) => setWavelength(value)} width="250px">
+        <Slider value={wavelength} min={1} max={100} onChange={(value) => setWavelength(value)} width="250px">
           <SliderTrack>
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
         </Slider>
         <Text color="white">Amplitude: {amplitude}</Text>
-        <Slider value={amplitude} min={0} max={100} onChange={(value) => setAmplitude(value)} width="250px">
+        <Slider value={amplitude} min={1} max={100} onChange={(value) => setAmplitude(value)} width="250px">
           <SliderTrack>
             <SliderFilledTrack />
           </SliderTrack>
