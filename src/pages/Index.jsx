@@ -7,7 +7,7 @@ const SOUND_SOURCE_WIDTH = 300;
 
 const Index = () => {
   const [wavelength, setWavelength] = useState(50);
-  const [amplitude, setAmplitude] = useState(20);
+  const [amplitude, setAmplitude] = useState(30);
   const [isPlaying, setIsPlaying] = useState(false);
   const canvasRef = useRef(null);
 
@@ -33,7 +33,7 @@ const Index = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Draw sound source
-      ctx.fillStyle = "grey";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
       ctx.fillRect(0, 0, SOUND_SOURCE_WIDTH + (isPlaying ? Math.sin(Date.now() / 100) * amplitude : 0), canvas.height);
 
       // Draw particles
